@@ -1,0 +1,8 @@
+Var :is a keyword used to declare a variable.
+     It cannot replace a specific data type in a function.
+     Inside a function, if you define a variable using var,
+     the compiler assigns the data type based on the initial value of that variable.
+Dynamic:is data type can be equal any data type knowing 
+          and can declear it in function.
+explicitly typed variables: is data type like (int , double ,String) it make program 
+     more easier ,clear and helped avoid mistakes
