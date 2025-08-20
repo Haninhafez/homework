@@ -1,4 +1,5 @@
 void main() {
+  //a:
   dynamic x = 455;
   print(x);
   x = "Hanin";
@@ -9,9 +10,13 @@ void main() {
   //y="hanin";
   //print(y);
 
+  //b:
+
   var greeting = "Hi";
   greeting = "Hello";
   print(greeting);
+
+  //c:
 
   num pi = 3.14159;
   print(pi.toInt());
