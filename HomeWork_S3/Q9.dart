@@ -10,8 +10,7 @@ void main() {
     }
   ];
   print(Student[1]["Grade"]);
-  int grade1 = Student[0]['Grade'];
-  int grade2 = Student[1]['Grade'];
-  double Avrage = (grade1 + grade2) / 2;
+
+  double Avrage = (Student[0]['Grade'] + Student[1]['Grade']) / 2;
   print("Avrage of grades:$Avrage");
 }
