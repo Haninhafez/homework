@@ -2,25 +2,21 @@ import 'dart:io';
 
 void main() {
   print("Enter a setence");
-  String sentance = stdin.readLineSync()!;
-  List<String> ListWord = sentance.split("");
+  String sentance = stdin.readLineSync()!.toLowerCase();
 
-  print(ispalindrom(ListWord));
+  print(ispalindrom(sentance));
 }
 
-String filtered(List sentance) {
-  String avoiding = "~`@#\$%^&*()_+,.";
-  String filtered = "";
-  for (var i in sentance) {}
-  return filtered;
-}
+bool ispalindrom(String sentance) {
+  RegExp regExp = RegExp(r'[^a-zA-Z0-9]');
+  sentance = sentance.replaceAll(regExp, '');
+  List ListWord = sentance.split('');
 
-bool ispalindrom(List sentance) {
   int ptrLeft = 0;
   int ptrRight = sentance.length - 1;
 
   while (ptrLeft <= ptrRight) {
-    if (sentance[ptrLeft] != sentance[ptrRight])
+    if (ListWord[ptrLeft] != ListWord[ptrRight])
       return false;
     else {
       ptrRight--;
