@@ -1,103 +1,113 @@
-class tripFuel {
-  double? _fuel;
-  double _fuelPerKM = .065;
-  double? _distance;
-  set fuel(double? fuel) {
-    if (fuel != null && fuel > 0) {
-      _fuel = fuel;
+abstract class Vechle {
+  String _brand = "";
+  int _year = 2020;
+  int _baseFuelPerKM;
+  int currentCapacity;
+
+  Vechle(this._baseFuelPerKM,
+      {required String brand,
+      required int year,
+      required this.currentCapacity}) {
+    this.brand = brand;
+    this.year = year;
+  }
+
+  set brand(String brand) {
+    if (brand.isNotEmpty) {
+      _brand = brand;
     } else {
       print('Invalid');
     }
   }
 
-  double? get fuel => _fuel;
+  String get brand => _brand;
 
-  set fuelPerKM(double? fuelPerKM) {
-    if (fuelPerKM != null && fuelPerKM > 0) {
-      _fuelPerKM = fuelPerKM;
+  set year(int year) {
+    if (year > 0) {
+      _year = year;
     } else {
       print('Invalid');
     }
   }
 
-  double? get fuelPerKM => _fuelPerKM;
+  int get year => _year;
+  get baseFuelPerKM => _baseFuelPerKM;
 
-  set distance(double? distance) {
-    if (distance != null && distance > 0) {
-      _distance = distance;
+  double fuelCompetion(int distance);
+}
+
+class Motorcycle extends Vechle {
+  double _engineEfficiency = .1;
+
+  Motorcycle(
+    super.baseFuelPerKM, {
+    required super.brand,
+    required super.year,
+    required double engineEfficiency,
+    required super.currentCapacity,
+  });
+
+  set engineEfficiency(engineEfficiency) {
+    if (engineEfficiency > 0) {
+      _engineEfficiency = engineEfficiency;
     } else {
       print('Invalid');
     }
   }
 
-  double? get distance => _distance;
+  double? get engineEfficiency => _engineEfficiency;
 
-  double defineFule(double distance) {
-    _distance = distance;
-    return _distance! / _fuelPerKM;
+  @override
+  double fuelCompetion(int distance) {
+    return distance * baseFuelPerKM * _engineEfficiency;
   }
 }
 
-class Motorcycle extends tripFuel {
-  double? _engaineCapasity;
-  set engaineCapasity(double? engaineCapasity) {
-    if (engaineCapasity != null && engaineCapasity > 0) {
-      _engaineCapasity = engaineCapasity;
+class RaceCar extends Vechle {
+  double _powerRatio = 6;
+
+  RaceCar(super.baseFuelPerKM,
+      {required super.brand,
+      required super.year,
+      required double powerRatio,
+      required super.currentCapacity});
+
+  set powerRatio(powerRatio) {
+    if (powerRatio > 0) {
+      _powerRatio = powerRatio;
     } else {
       print('Invalid');
     }
   }
 
-  double? get engaineCapasity => _engaineCapasity;
-
-  double defineFule(double distance) {
-    double fuelDefined = super.defineFule(distance);
-    double fuelUsage = 1 + (_engaineCapasity! / 500) * .1;
-    return fuelDefined * fuelUsage;
-  }
-}
-
-class RaceCar extends tripFuel {
-  double? _horsePower;
-  set horsePower(double? horsePower) {
-    if (horsePower != null && horsePower > 0) {
-      _horsePower = horsePower;
-    } else {
-      print('Invalid');
-    }
-  }
-
-  double? get horsePower => _horsePower;
-
-  double defineFule(double distance) {
-    double fuelDefined = super.defineFule(distance);
-    double fuelUsage = 1 + (_horsePower! / 200) * .1;
-    return fuelDefined * fuelUsage;
+  double get powerRatio => _powerRatio;
+  @override
+  double fuelCompetion(int distance) {
+    return (_powerRatio + 1) * baseFuelPerKM * distance;
   }
 }
 
 void main() {
-  List<double> tripOfDistance = [180, 80, 60];
-  double totalDistance = tripOfDistance.reduce((a, b) => a + b);
-  tripFuel trip1 = tripFuel();
-  trip1.distance = totalDistance;
-  trip1.fuel = 150;
-  trip1.fuelPerKM = .065;
+  List<Vechle> Vechles = [
+    RaceCar(100,
+        brand: "Ferrari", year: 2025, powerRatio: 9.86, currentCapacity: 8000),
+    Motorcycle(300,
+        brand: "Hyndai",
+        year: 2008,
+        engineEfficiency: 0.8,
+        currentCapacity: 5700)
+  ];
 
-  Motorcycle motor = Motorcycle();
-  motor.engaineCapasity = 1500;
-  var motorFuel = motor.defineFule(totalDistance);
-
-  RaceCar Rcar = RaceCar();
-  Rcar.horsePower = 200;
-  var RcarFuel = Rcar.defineFule(totalDistance);
-
-  if (motorFuel > RcarFuel) {
-    print(
-        "Motorcycle is better than Race Car it has ${motor.engaineCapasity} CC");
-  }
-
-  if (motorFuel < RcarFuel) {
-    print("Race Car is better than Motorcycle it has ${Rcar.horsePower} HP");
+  List<int> trips = [150, 350];
+  for (var Vechle in Vechles) {
+    double fuelCompetion = 0;
+    for (var trip in trips) {
+      fuelCompetion += Vechle.fuelCompetion(trip);
+    }
+    if (Vechle.currentCapacity < fuelCompetion) {
+      print("${Vechle.brand} has not enough fuel to compleate the trip");
+    } else {
+      print("${Vechle.brand} has  enough fuel to compleate the trip");
+    }
   }
 }

@@ -64,21 +64,14 @@ double totalCost(double totalArea) {
   double totalCost = 0;
   double editTotalArea = totalArea;
 
-  if (totalArea > 50) {
-    totalCost += 50 * 1.5;
-    totalArea -= 50;
-  } else {
-    return totalCost * 1.5;
-  }
-
-  if (totalArea > 100) {
-    totalCost += 100 * 1.25;
+  if (totalArea <= 50) {
+    totalCost = 50 * 1.5;
+  } else if (totalArea <= 150) {
+    totalCost = (50 * 1.5) + (totalArea - 50) * 1.25;
     totalArea -= 100;
   } else {
-    return totalCost * 1.25;
+    totalCost = (50 * 1.5) + (100 * 1.25) + (totalArea - 150) * 1;
   }
-
-  totalCost += editTotalArea * 1;
   return totalCost;
 }
 

@@ -1,19 +1,22 @@
-import '../LetcodHW/leetcode_TwoSum.dart';
+int search(List<int> nums, int target) {
+  int left = 0;
+  int right = nums.length - 1;
 
-void main() {
-  List<int> s = [2, 7, 11, 15];
-  int target = 9;
-  print(towSum(s, target));
+  while (left <= right) {
+    int mid = (left + right) ~/ 2;
+    if (nums[mid] == target) {
+      return mid;
+    } else if (nums[mid] < target) {
+      left = mid + 1;
+    } else {
+      right = mid - 1;
+    }
+  }
+
+  return -1;
 }
 
-List<int> twoSum(List<int> nums, int target) {
-  Map<int, int> maptosum = {};
-  for (int i = 0; i < nums.length; i++) {
-    int num = target - nums[i];
-    if (maptosum.containsKey(num)) {
-      return [maptosum[num]!, i];
-    }
-    maptosum[nums[i]] = i;
-  }
-  return [];
+void main() {
+  print(search([-1, 0, 3, 5, 9, 12], 9));
+  print(search([-1, 0, 3, 5, 9, 12], 2));
 }
