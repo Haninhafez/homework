@@ -13,7 +13,7 @@ void main() {
     }
   }
   print("How many word in sentence ? ${listSentence.length}");
-//  print(storage);
+  print(storage);
   storage.forEach((key, value) {
     int maxFrequency = 1;
     if (value > maxFrequency) {

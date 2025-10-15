@@ -9,5 +9,9 @@ void main() {
   String Name = "Hanin";
   //print data in message
   print("My name is $Name");
-  print("My phone Number is $phonenum");
+  print("My phone Number is ${fun()}");
+}
+
+fun() {
+  return 7;
 }

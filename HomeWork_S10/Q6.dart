@@ -1,5 +1,5 @@
 void main() {
-  String s = "()[]{}";
+  String s = "{[()]})";
   print("Is valid ?? ${isvalid(s)}");
 }
 
