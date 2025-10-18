@@ -18,17 +18,18 @@ class MyApp extends StatelessWidget {
         body: Padding(
           padding: EdgeInsetsGeometry.all(10),
           child: Column(
+            spacing: 20,
             children: [
               Partone(),
-              SizedBox(height: 20),
+
               Divider(height: 2, color: Colors.grey[400]),
-              SizedBox(height: 20),
+
               Parttwo(),
-              SizedBox(height: 20),
+
               Partthree(),
-              SizedBox(height: 20),
+
               Partfour(),
-              SizedBox(height: 20),
+
               Container(height: 50, color: Colors.grey),
             ],
           ),
