@@ -1,9 +1,10 @@
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:quickstart_ui/actionButtonSection.dart';
-import 'package:quickstart_ui/featuresList.dart';
-import 'package:quickstart_ui/hello_labbel.dart';
-import 'package:quickstart_ui/quickstate.dart';
-import 'package:quickstart_ui/quickstate_labbel.dart';
+import 'package:quickstart_ui/widget/actionButtonSection.dart';
+import 'package:quickstart_ui/widget/featuresList.dart';
+import 'package:quickstart_ui/widget/hello_labbel.dart';
+import 'package:quickstart_ui/widget/quickstate.dart';
 
 void main() {
   runApp(QuickStateUI());
