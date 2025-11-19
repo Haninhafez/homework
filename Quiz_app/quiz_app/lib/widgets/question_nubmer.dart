@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class QuestionNubmer extends StatelessWidget {
   final int number;
-  const QuestionNubmer({super.key, required this.number});
+  final String image;
+  const QuestionNubmer({super.key, required this.number, required this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class QuestionNubmer extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         spacing: 5,
         children: [
-          Icon(Icons.circle_outlined),
+          SvgPicture.asset(image),
           Text(
             "Question ${number.toString()}",
             style: TextStyle(color: Colors.white70, fontSize: 20),
