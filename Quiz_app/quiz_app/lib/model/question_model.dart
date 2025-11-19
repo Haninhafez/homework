@@ -39,41 +39,44 @@ class Quiz {
     QuestionModel(
       AppImages.q1,
       questionNumber: 1,
-      questionTitle: """How would you describe 
-your level of satisfaction 
-with the healthcare 
-system?""",
-      correctAnswer: "Strongly satisfied",
-      choices: ["Strongly satisfied", "Satisfied", "Neutral", "Not satisfied"],
+      questionTitle: """How often do you exercise 
+during a typical week?""",
+      correctAnswer: "3–5 times",
+      choices: ["Daily", "3–5 times", "1–2 times", "Rarely"],
     ),
 
     QuestionModel(
       AppImages.q2,
       questionNumber: 2,
-      questionTitle: """What vitamins do you 
-take?""",
-      correctAnswer: "Zinc",
-      choices: ["Zinc", "Magnesium", "Vitamin B", "VitaminD"],
+      questionTitle: """Which of these habits 
+best describes your 
+morning routine?""",
+      correctAnswer: "Healthy breakfast",
+      choices: [
+        "Skip breakfast",
+        "Healthy breakfast",
+        "Coffee only",
+        "Water only",
+      ],
     ),
 
     QuestionModel(
       AppImages.q3,
       questionNumber: 3,
-      questionTitle: """How would you describe 
-your level of satisfaction 
-with the healthcare 
-system?""",
-      correctAnswer: "Strongly satisfied",
-      choices: ["Strongly satisfied", "Satisfied", "Neutral", "Not satisfied"],
+      questionTitle: """How would you rate 
+your overall sleep 
+quality?""",
+      correctAnswer: "Good",
+      choices: ["Excellent", "Good", "Average", "Poor"],
     ),
 
     QuestionModel(
       AppImages.q4,
       questionNumber: 4,
-      questionTitle: """What vitamins do you 
-take?""",
-      correctAnswer: "Vitamin D3",
-      choices: ["Zinc", "Magnesium", "Vitamin B", "Vitamin D3"],
+      questionTitle: """Which type of diet do 
+you follow the most?""",
+      correctAnswer: "Balanced diet",
+      choices: ["Keto", "Vegetarian", "Balanced diet", "High-protein"],
     ),
   ];
   List<QuestionModel> get questionQuiz => quiz;
