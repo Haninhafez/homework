@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quiz_app/core/theme/colors_app.dart';
 import 'package:quiz_app/core/theme/image_app.dart';
 import 'package:quiz_app/model/question_model.dart';
+import 'package:quiz_app/widgets/correctAnswers/list_questions_answer.dart';
 import 'package:quiz_app/widgets/list_questions.dart';
 
 class CorrectAnswerScreen extends StatefulWidget {
@@ -12,11 +13,9 @@ class CorrectAnswerScreen extends StatefulWidget {
   State<CorrectAnswerScreen> createState() => _CorrectAnswerScreenState();
 }
 
-class _CorrectAnswerScreenState extends State<CorrectAnswerScreen>
-    with AutomaticKeepAliveClientMixin {
+class _CorrectAnswerScreenState extends State<CorrectAnswerScreen> {
   @override
   Widget build(BuildContext context) {
-    super.build(context);
     return Scaffold(
       body: Container(
         height: double.infinity,
@@ -30,12 +29,13 @@ class _CorrectAnswerScreenState extends State<CorrectAnswerScreen>
               ),
             ),
             Image.asset(AppImages.gradinet),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 35, horizontal: 5),
+              child: ListQuestionsAnswers(quiz: widget.quizManger),
+            ),
           ],
         ),
       ),
     );
   }
-
-  @override
-  bool get wantKeepAlive => true;
 }

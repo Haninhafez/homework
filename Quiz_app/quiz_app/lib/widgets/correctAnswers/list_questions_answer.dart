@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/model/question_model.dart';
+import 'package:quiz_app/widgets/correctAnswers/current_quetions_answer.dart';
 import 'package:quiz_app/widgets/current_question.dart';
 
-class ListQuestions extends StatefulWidget {
+class ListQuestionsAnswers extends StatefulWidget {
   final Quiz quiz;
 
-  ListQuestions({super.key, required this.quiz});
+  ListQuestionsAnswers({super.key, required this.quiz});
 
   @override
-  State<ListQuestions> createState() => _ListQuestionsState();
+  State<ListQuestionsAnswers> createState() => _ListQuestionsAnswersState();
 }
 
-class _ListQuestionsState extends State<ListQuestions> {
+class _ListQuestionsAnswersState extends State<ListQuestionsAnswers> {
   PageController pageController = PageController();
 
   @override
@@ -20,12 +21,13 @@ class _ListQuestionsState extends State<ListQuestions> {
     super.dispose();
   }
 
+  @override
   Widget build(BuildContext context) {
     return PageView.builder(
       controller: pageController,
       physics: NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
-        return CurrentQuestion(
+        return CurrentQuestionAnswer(
           questionModel: widget.quiz.quiz[index],
           pageController: pageController,
           quizManger: widget.quiz,

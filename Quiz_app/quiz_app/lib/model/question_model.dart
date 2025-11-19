@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:quiz_app/core/theme/image_app.dart';
 
 class QuestionModel {
@@ -15,6 +16,22 @@ class QuestionModel {
     required this.correctAnswer,
     required this.choices,
   });
+
+  Color colorOption(int index, QuestionModel questionModel) {
+    final correct = questionModel.correctAnswer;
+    final selected = questionModel.selectedAnswer;
+    final choice = questionModel.choices[index];
+
+    if (selected == correct) {
+      if (choice == correct) return Colors.green;
+      return Colors.white;
+    }
+
+    if (choice == correct) return Colors.green;
+    if (choice == selected) return Colors.red.shade400;
+
+    return Colors.white;
+  }
 }
 
 class Quiz {

@@ -20,12 +20,23 @@ class ContorleButtons extends StatefulWidget {
 
 class _ContorleButtonsState extends State<ContorleButtons> {
   @override
+  late VoidCallback listener;
+
+  @override
   void initState() {
     super.initState();
 
-    widget.pageController.addListener(() {
-      setState(() {});
-    });
+    listener = () {
+      if (mounted) setState(() {});
+    };
+
+    widget.pageController.addListener(listener);
+  }
+
+  @override
+  void dispose() {
+    widget.pageController.removeListener(listener);
+    super.dispose();
   }
 
   @override
