@@ -6,13 +6,11 @@ class ListChoices extends StatefulWidget {
   final int questionIndex;
   final Quiz quizManger;
   final QuestionModel questionModel;
-  final Function(String selected) onSelected;
 
   const ListChoices({
     super.key,
     required this.quizManger,
 
-    required this.onSelected,
     required this.questionIndex,
     required this.questionModel,
   });
@@ -38,7 +36,6 @@ class _ListChoicesState extends State<ListChoices>
                 widget.questionIndex,
                 selectedChoice,
               );
-              widget.onSelected(selectedChoice);
             });
           },
           child: OptionItem(

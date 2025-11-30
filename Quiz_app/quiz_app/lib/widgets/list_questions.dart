@@ -23,7 +23,6 @@ class _ListQuestionsState extends State<ListQuestions> {
   Widget build(BuildContext context) {
     return PageView.builder(
       controller: pageController,
-      physics: NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
         return CurrentQuestion(
           questionModel: widget.quiz.quiz[index],

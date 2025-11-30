@@ -47,9 +47,6 @@ class _CurrentQuestionState extends State<CurrentQuestion> {
             child: ListChoices(
               quizManger: widget.quizManger,
 
-              onSelected: (String selected) {
-                setState(() {});
-              },
               questionIndex: widget.quizManger.quiz.indexOf(
                 widget.questionModel,
               ),
